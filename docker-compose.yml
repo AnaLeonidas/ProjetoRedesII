@@ -1,0 +1,54 @@
+services:
+  servidor_sequencial:
+    build:
+      context: ./Servidor_sequencial # Pasta onde está o Dockerfile do servidor01
+    container_name: container-servidor01
+    networks:
+      minha_rede_customizada:
+        ipv4_address: 79.21.0.2 # IP estático do servidor01
+
+  cliente_01:
+    build:
+      context: ./Cliente_01 # Pasta onde está o Dockerfile do cliente01
+    container_name: container-cliente01
+    networks:
+      minha_rede_customizada:
+        ipv4_address: 79.21.0.3 # IP estático do cliente01
+    depends_on:
+      - servidor_sequencial 
+
+  servidor_concorrente:
+    build:
+      context: ./Servidor_concorrente # Pasta onde está o Dockerfile do servidor02
+    container_name: container-servidor02
+    networks:
+      minha_rede_customizada:
+        ipv4_address: 79.21.0.4 # IP estático do servidor02
+  
+  cliente_02:
+    build:
+      context: ./Cliente_02 # Pasta onde está o Dockerfile do cliente02
+    container_name: container-cliente02
+    networks:
+      minha_rede_customizada:
+        ipv4_address: 79.21.0.5 # IP estático do cliente02
+    depends_on:
+      - servidor_concorrente
+
+  cliente_03:
+    build:
+      context: ./Cliente_03 # Pasta onde está o Dockerfile do cliente03
+    container_name: container-cliente03
+    networks:
+      minha_rede_customizada:
+        ipv4_address: 79.21.0.6 # IP estático do cliente03
+    depends_on:
+      - servidor_concorrente
+
+networks:
+  minha_rede_customizada:
+    driver: bridge
+    ipam: 
+      driver: default
+      config:
+        - subnet: 79.21.0.0/24 
