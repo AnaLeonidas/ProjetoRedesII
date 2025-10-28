@@ -13,13 +13,13 @@ lista_tempos = []
 lista_original = ["Scooby Doo na ilha dos zumbis", "Noivas em guerra", "Vestida para casar", "La la land", "Crepúsculo", "Batman", "Aves de Rapina", "Os suspeitos", "Scooby Doo e a bruxa fantasma", "A viagem de chihiro", "Ponyo", "Scooby Doo e o rei dos duendes", "Barbie fairytopia", "Barbie mermaidia", "Barbie a magia do arco iris", "A bussola de ouro", "Coração de tinta", "O labirinto do fauno", "Alice no pais das maravilhas", "Mulherzinhas", "Tinker Bell uma aventura no mundo das fadas"]
 
 random.seed(42)
-lista_filmes = random.choices(lista_original, k=500)
+lista_filmes = random.choices(lista_original, k=1500)
 
-# Endereço IP e porta do servidor
 SERVER_HOST = '79.21.0.4'
 SERVER_PORT = 80
 
 time.sleep(5)
+
 
 def gerar_ID(matricula, nome):
     texto = f"{matricula} {nome}"
@@ -63,7 +63,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
 media = statistics.mean(lista_tempos)
 desvio_padrao = statistics.stdev(lista_tempos)
-variancia = statistics.variance(lista_tempos)
 tempo_total = sum(lista_tempos)
 
 print("\n--- Resultados Finais ---")
@@ -73,5 +72,4 @@ for k, tempo in enumerate(lista_tempos):
 print("\nEstatísticas:")
 print(f"  Tempo Total: {tempo_total:.4f} s")
 print(f"  Média: {media:.4f} s")
-print(f"  Variância: {variancia:.4f} s²")
 print(f"  Desvio Padrão: {desvio_padrao:.4f} s")

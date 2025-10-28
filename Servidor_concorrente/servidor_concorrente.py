@@ -15,6 +15,7 @@ class Filme:
         self.duracao = duracao
         self.sinopse = sinopse
 
+
 def filmes_json(arquivo):
     lista = []
     with open(arquivo, 'r', encoding='utf-8') as f:
@@ -25,6 +26,8 @@ def filmes_json(arquivo):
     return lista
 
 lista_filmes = filmes_json(arquivo)
+
+
 def thread(conn, addr):
     with conn:
             print(f"Conexão recebida de {addr}")
@@ -50,7 +53,6 @@ def thread(conn, addr):
                         else:
                             print(f"Filme nao encontrado: {filme}")
                             http_resposta = "HTTP/1.1 404 Not Found\n\nFilme nao encontrado."
-
                     conn.sendall(http_resposta.encode('utf-8'))
                 except socket.error as e:
                     print(f"Erro na conexão com {addr}: {e}")
@@ -59,20 +61,16 @@ def thread(conn, addr):
 
 def extrair_valores_split(request_string):
     try:
-        # 1. Pega a primeira linha
         primeira_linha = request_string.split('\r\n')[0]
-        # 2. Divide a primeira linha em partes (método, path, versão http)
         partes = primeira_linha.split(' ')
         metodo = partes[0]
-        path = partes[1] # Será algo como "/123/maca"
-        # 3. Divide o path pelas barras
-        partes_path = path.split('/') # Será algo como ['', '123', 'maca']
+        path = partes[1] 
+        partes_path = path.split('/') 
         id_valor = partes_path[1]
         filme_codificado = partes_path[2]
         filme_valor = unquote(filme_codificado)
         return metodo, id_valor, filme_valor
     except (IndexError, AttributeError):
-        # Falha se a string não tiver o formato esperado
         return None, None, None
 
 HOST = '79.21.0.4'
