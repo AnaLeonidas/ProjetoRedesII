@@ -36,7 +36,6 @@ def gerar_http_requisicao(id, filme):
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     try:
         print(f"Conectando ao servidor em {SERVER_HOST}:{SERVER_PORT}...")
-        # Conecta ao servidor
         s.connect((SERVER_HOST, SERVER_PORT))
         print("Conectado! Enviando requisição HTTP...")
         for i in range(10):
