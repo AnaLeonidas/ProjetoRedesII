@@ -50,14 +50,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     print("\n--- Resposta do Servidor ---")
                     print(response.decode('utf-8'))
                     print("----------------------------")
-                    #time.sleep(10)
             tempo_final = time.perf_counter()
             tempo_rodada = tempo_final - tempo_inicial
-            avg_time = tempo_rodada / 1000
             lista_tempos.append(tempo_rodada)
-            
-            print(f"\n--- Resultados ---")
-            print(f"Tempo médio por requisição: {avg_time:.4f} segundos")
 
     except ConnectionRefusedError:
         print("Erro: A conexão foi recusada. O servidor está rodando?")
