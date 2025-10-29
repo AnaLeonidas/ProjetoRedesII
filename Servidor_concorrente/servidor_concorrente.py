@@ -59,19 +59,20 @@ def thread(conn, addr):
                     break 
 
 
-def extrair_valores_split(request_string):
+def extrair_valores_split(requisicao):
     try:
-        primeira_linha = request_string.split('\r\n')[0]
+        primeira_linha = requisicao.split('\r\n')[0]
         partes = primeira_linha.split(' ')
         metodo = partes[0]
-        path = partes[1] 
-        partes_path = path.split('/') 
-        id_valor = partes_path[1]
-        filme_codificado = partes_path[2]
+        caminho = partes[1] 
+        partes_caminho = caminho.split('/') 
+        id_valor = partes_caminho[1]
+        filme_codificado = partes_caminho[2]
         filme_valor = unquote(filme_codificado)
         return metodo, id_valor, filme_valor
     except (IndexError, AttributeError):
         return None, None, None
+    
 
 HOST = '79.21.0.4'
 PORT = 80

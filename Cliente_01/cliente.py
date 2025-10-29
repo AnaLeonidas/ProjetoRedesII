@@ -28,10 +28,10 @@ def gerar_ID(matricula, nome):
     return hash_md5
 
 
-def gerar_http_request(id, filme):
+def gerar_http_requisicao(id, filme):
     filme_codificado = quote(filme)
-    http_request = f"GET /{id}/{filme_codificado} HTTP/1.1\r\nHost: {SERVER_HOST}\r\n\r\n"
-    return http_request
+    http_requisicao = f"GET /{id}/{filme_codificado} HTTP/1.1\r\nHost: {SERVER_HOST}\r\n\r\n"
+    return http_requisicao
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     try:
@@ -43,12 +43,12 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             tempo_inicial = time.perf_counter()
             for filme in lista_filmes:
                     X_Custom_ID = gerar_ID(MATRICULA, NOME)
-                    http_request = gerar_http_request(X_Custom_ID, filme)
-                    s.sendall(http_request.encode('utf-8'))
+                    http_requisicao = gerar_http_requisicao(X_Custom_ID, filme)
+                    s.sendall(http_requisicao.encode('utf-8'))
 
-                    response = s.recv(1024)        
+                    resposta = s.recv(1024)        
                     print("\n--- Resposta do Servidor ---")
-                    print(response.decode('utf-8'))
+                    print(resposta.decode('utf-8'))
                     print("----------------------------")
             tempo_final = time.perf_counter()
             tempo_rodada = tempo_final - tempo_inicial
