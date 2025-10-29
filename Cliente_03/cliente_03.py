@@ -13,7 +13,7 @@ lista_tempos = []
 lista_original = ["Scooby Doo na ilha dos zumbis", "Noivas em guerra", "Vestida para casar", "La la land", "Crepúsculo", "Batman", "Aves de Rapina", "Os suspeitos", "Scooby Doo e a bruxa fantasma", "A viagem de chihiro", "Ponyo", "Scooby Doo e o rei dos duendes", "Barbie fairytopia", "Barbie mermaidia", "Barbie a magia do arco iris", "A bussola de ouro", "Coração de tinta", "O labirinto do fauno", "Alice no pais das maravilhas", "Mulherzinhas", "Tinker Bell uma aventura no mundo das fadas"]
 
 random.seed(42)
-lista_filmes = random.choices(lista_original, k=1500)
+lista_filmes = random.choices(lista_original, k=5)
 
 SERVER_HOST = '79.21.0.4'
 SERVER_PORT = 80
