@@ -29,4 +29,3 @@ docker-compose up --build servidor_concorrente cliente_02 cliente_03
 ### 3. Links
 Vídeo: https://youtu.be/loR5VfVbOPI
 Github: https://github.com/AnaLeonidas/ProjetoRedesII
->>>>>>> ebd0295c7420ac212c4c4e645239d417fe8a9437
