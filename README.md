@@ -25,3 +25,6 @@ docker-compose up --build servidor_sequencial cliente_01
 Este comando irá construir e iniciar os contêineres do **servidor concorrente** e **dois clientes** (`cliente_02` e `cliente_03`), que executará um lote de testes contra eles.
 
 docker-compose up --build servidor_concorrente cliente_02 cliente_03
+
+### 3. Vídeo
+https://youtu.be/loR5VfVbOPI
